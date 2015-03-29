@@ -13,7 +13,7 @@ Personal configuration files. Relies on the standard german keyboard layout.
 
 ## install
 
-### zsh
+#### zsh
 
 ```shell
 $ chsh -s /bin/zsh
@@ -22,7 +22,7 @@ $ curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh 
 
 Set theme in .zshrc to "nanotech"
 
-### transparency
+#### transparency
 
 ```shell
 Xcompmgr
@@ -32,7 +32,9 @@ transset
 $ echo "[ -n "$XTERM_VERSION" ] && transset -a >/dev/null" >> ~./.zshrc
 ```
 
-### xterm config (executed in i3 startup, X didnt recognize the file...)
+#### xterm config 
+
+(executed in i3 startup, X didnt recognize the file...)
 
 ```shell
 $ xrdb -merge ~/.Xresources
