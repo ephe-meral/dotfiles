@@ -61,6 +61,7 @@ graphics/tiff
 graphics/webp
 graphics/xsane
 graphics/xv
+irc/weechat
 multimedia/gstreamer-plugins
 multimedia/gstreamer1-plugins
 multimedia/mplayer
