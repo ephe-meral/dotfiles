@@ -146,10 +146,13 @@ client.focused   #007fbf #007fbf #ffffff
 client.unfocused #666666 #666666 #ffffff
 client.urgent    #aa0000 #990000 #ffffff
 
-# Set the default wallpaper
-exec --no-startup-id feh --bg-fill /usr/local/share/wallpapers/FreeBSD/a_1600x900.jpg   
-
 # Custom KeyBinds
 bindsym $mod+l exec sh ~/.i3/i3lock.sh
 bindsym Print exec scrot '%Y-%m-%d-%T_$wx$h_scrot.png' -e 'mv $f ~/Pictures/screenshots/'
 bindsym $mod+p exec lxrandr
+
+# Set the default wallpaper
+exec --no-startup-id feh --bg-fill /usr/local/share/wallpapers/FreeBSD/a_1600x900.jpg
+
+# Make sure the terminal defaults are loaded
+exec --no-startup-id xrdb -merge ~/.Xresources

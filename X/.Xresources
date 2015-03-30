@@ -1,0 +1,29 @@
+! Use a nice truetype font and size by default... 
+XTerm*faceName: DejaVu Sans Mono Book
+XTerm*faceSize: 9
+
+! I like a LOT of scrollback...
+XTerm*savelines: 16384
+
+! double-click to select whole URLs :D
+XTerm*charClass: 33:48,36-47:48,58-59:48,61:48,63-64:48,95:48,126:48
+
+! Theme Four
+XTerm*background: rgb:00/00/00
+XTerm*foreground: rgb:ff/ff/ff
+XTerm*color0:     rgb:00/00/00
+XTerm*color1:     rgb:d3/62/65
+XTerm*color2:     rgb:ae/ce/91
+XTerm*color3:     rgb:e7/e1/8c
+XTerm*color4:     rgb:7a/7a/b0
+XTerm*color5:     rgb:96/3c/59
+XTerm*color6:     rgb:41/81/79
+XTerm*color7:     rgb:be/be/be
+XTerm*color8:     rgb:66/66/66
+XTerm*color9:     rgb:ef/81/71
+XTerm*color10:    rgb:e5/f7/79
+XTerm*color11:    rgb:ff/f7/96
+XTerm*color12:    rgb:41/86/be
+XTerm*color13:    rgb:ef/9e/be
+XTerm*color14:    rgb:71/be/be
+XTerm*color15:    rgb:ff/ff/ff
