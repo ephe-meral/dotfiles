@@ -52,7 +52,7 @@ set ttymouse=xterm2
 
 " Remappings
 map <Leader>n <plug>NERDTreeTabsToggle<CR>
-
+vnoremap // y/<C-R>"<CR>       " allow searching for selected text by typing // in visual mode
 
 " Finally...
 syntax on
