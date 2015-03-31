@@ -1,8 +1,8 @@
-" This must be first, because it changes other options as side effect
 set nocompatible
 
 
 " Use pathogen to easily modify the runtime path to include all plugins under the ~/.vim/bundle directory
+call pathogen#infect()
 call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
 
@@ -54,7 +54,13 @@ set ttymouse=xterm2
 map <Leader>n <plug>NERDTreeTabsToggle<CR>
 vnoremap // y/<C-R>"<CR>       " allow searching for selected text by typing // in visual mode
 
+
 " Finally...
 syntax on
 filetype plugin indent on
 "colorscheme xoria256
+
+
+" Auto-load nerdtree
+autocmd VimEnter * NERDTree | wincmd p
+let NERDTreeShowBookmarks=1
