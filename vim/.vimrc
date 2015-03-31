@@ -82,9 +82,11 @@ set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
 
 
-" Finally...
+" Syntax and file-types...
 syntax on
 filetype plugin indent on
+" enforce markdown for .md files (instead of modula2)
+autocmd BufNewFile,BufRead *.md set filetype=markdown
 set t_Co=256
 "colorscheme Dark2
 
