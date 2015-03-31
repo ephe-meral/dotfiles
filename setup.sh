@@ -1,6 +1,16 @@
-#!/bin/sh
+#!/bin/zsh
 
 CWD=$(pwd)
+
+
+# Install the fonts...
+ln -s "$CWD/fonts/.fonts" "$HOME/.fonts"
+
+if [[ -n `which fc-cache` ]]; then
+  fc-cache -f "$HOME/.fonts"
+fi
+
+exit 0
 
 # Add all the dotfiles as symlinks...
 # Add i3
