@@ -11,7 +11,7 @@ Personal configuration files. Relies on the standard german keyboard layout.
   - lxappearance
   - lxrandr
 
-## install
+## Install
 
 #### zsh
 
@@ -40,4 +40,12 @@ $ echo "[ -n \"$XTERM_VERSION\" ] && transset -a >/dev/null" >> ~./.zshrc
 
 ```shell
 $ xrdb -merge ~/.Xresources
+```
+
+#### weechat
+
+```
+enable mouse:
+/set weechat.look.mouse on
+/mouse enable
 ```
