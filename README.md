@@ -48,4 +48,8 @@ $ xrdb -merge ~/.Xresources
 enable mouse:
 /set weechat.look.mouse on
 /mouse enable
+
+add buffers.pl
+/script install buffers.pl
+/set weechat.bar.buffers.size 15
 ```
