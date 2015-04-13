@@ -11,7 +11,7 @@ Personal configuration files. Relies on the standard german keyboard layout.
   - lxappearance
   - lxrandr
 
-## install
+## Install
 
 #### zsh
 
@@ -22,6 +22,8 @@ $ curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh 
 
 Set theme in .zshrc to "nanotech"
 
+Add tmux alias: `alias tmux="tmux -2"`
+
 #### transparency
 
 ```shell
@@ -29,7 +31,7 @@ Xcompmgr
 $ echo "xcompmgr -c &" >> ~./xprofile
 
 transset
-$ echo "[ -n "$XTERM_VERSION" ] && transset -a >/dev/null" >> ~./.zshrc
+$ echo "[ -n \"$XTERM_VERSION\" ] && transset -a >/dev/null" >> ~./.zshrc
 ```
 
 #### xterm config 
@@ -38,4 +40,16 @@ $ echo "[ -n "$XTERM_VERSION" ] && transset -a >/dev/null" >> ~./.zshrc
 
 ```shell
 $ xrdb -merge ~/.Xresources
+```
+
+#### weechat
+
+```
+enable mouse:
+/set weechat.look.mouse on
+/mouse enable
+
+add buffers.pl
+/script install buffers.pl
+/set weechat.bar.buffers.size 15
 ```
