@@ -67,7 +67,7 @@ set ttyfast					   " send more characters for redraws
 set mouse=a                    " enable mouse use in all modes
 " Set this to the name of your terminal that supports mouse codes.
 " Must be one of: xterm, xterm2, netterm, dec, jsbterm, pterm
-set ttymouse=xterm2
+set ttymouse=xterm
 
 
 " Remappings
@@ -89,9 +89,16 @@ filetype plugin indent on
 autocmd BufNewFile,BufRead *.md set filetype=markdown
 set t_Co=256
 "colorscheme Dark2
+let g:SuperTabCrMapping=1
 
 
 " Auto-load nerdtree
 "autocmd VimEnter * NERDTree | wincmd p
 let g:nerdtree_tabs_open_on_console_startup = 1
 let NERDTreeShowBookmarks = 1
+
+" CTRL-P set bindings...
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:NERDTreeChDirMode       = 2
+let g:ctrlp_working_path_mode = 'rw'
