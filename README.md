@@ -28,13 +28,13 @@ Add tmux alias: `alias tmux="tmux -2"`
 
 ```shell
 Xcompmgr
-$ echo "xcompmgr -c &" >> ~./xprofile
+$ echo "xcompmgr -c &" >> ~/.xprofile
 
 transset
 $ echo "[ -n \"$XTERM_VERSION\" ] && transset -a >/dev/null" >> ~./.zshrc
 ```
 
-#### xterm config 
+#### xterm config
 
 (executed in i3 startup, X didnt recognize the file...)
 
