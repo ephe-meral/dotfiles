@@ -1,6 +1,6 @@
 ! Use a nice truetype font and size by default... 
-XTerm*faceName: DejaVu Sans Mono Book
-XTerm*faceSize: 9
+XTerm*faceName: Source Code Pro for Powerline
+XTerm*faceSize: 10
 
 ! I like a LOT of scrollback...
 XTerm*savelines: 16384

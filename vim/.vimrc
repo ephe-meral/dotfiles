@@ -18,7 +18,7 @@ set hidden
 
 
 " Miscellaneous settings
-set nowrap                     " don't wrap lines
+"set nowrap                     " don't wrap lines
 set nobackup                   " no backups, no swap files etc.
 set nowritebackup              "
 set noswapfile                 "
@@ -63,11 +63,11 @@ set clipboard+=unnamed
 
 
 " Mouse stuff
-set ttyfast					   " send more characters for redraws
+set ttyfast                    " send more characters for redraws
 set mouse=a                    " enable mouse use in all modes
 " Set this to the name of your terminal that supports mouse codes.
 " Must be one of: xterm, xterm2, netterm, dec, jsbterm, pterm
-set ttymouse=xterm
+set ttymouse=xterm2
 
 
 " Remappings
@@ -77,8 +77,8 @@ vnoremap // y/<C-R>"<CR>       " allow searching for selected text by typing // 
 
 " Airline...
 set laststatus=2
-"set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 9
-"let g:airline_powerline_fonts = 1
+set guifont=Source\ Code\ Pro\ 10
+let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
 
@@ -96,9 +96,16 @@ let g:SuperTabCrMapping=1
 "autocmd VimEnter * NERDTree | wincmd p
 let g:nerdtree_tabs_open_on_console_startup = 1
 let NERDTreeShowBookmarks = 1
+let g:NERDTreeShowHidden=1
+
 
 " CTRL-P set bindings...
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:NERDTreeChDirMode       = 2
 let g:ctrlp_working_path_mode = 'rw'
+
+
+" Highlight column 80 when hit by content
+highlight ColorColumn ctermbg=magenta
+call matchadd('ColorColumn', '\%81v', 100)

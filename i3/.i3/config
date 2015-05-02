@@ -15,7 +15,7 @@ set $mod Mod4
 # is used in the bar {} block below.
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:DejaVu Sans Mono 9
+font pango:Source Code Pro for Powerline 10
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # The font above is very space-efficient, that is, it looks good, sharp and
@@ -79,6 +79,8 @@ bindsym $mod+a focus parent
 
 # switching workspaces
 bindsym $mod+Tab workspace back_and_forth
+bindsym $mod+Prior workspace prev
+bindsym $mod+Next workspace next
 
 # workspaces
 set $tag1 "1: home"
@@ -146,6 +148,13 @@ client.focused   #007fbf #007fbf #ffffff
 client.unfocused #666666 #666666 #ffffff
 client.urgent    #aa0000 #990000 #ffffff
 
+# volume
+bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+ && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%- && pkill -RTMIN+1 i3blocks
+# granular volume control
+bindsym $mod+XF86AudioRaiseVolume exec amixer -D pulse sset Master 1%+ && pkill -RTMIN+1 i3blocks
+bindsym $mod+XF86AudioLowerVolume exec amixer -D pulse sset Master 1%- && pkill -RTMIN+1 i3blocks
+
 # Custom KeyBinds
 bindsym $mod+l exec sh ~/.i3/i3lock.sh
 bindsym Print exec scrot '%Y-%m-%d-%T_$wx$h_scrot.png' -e 'mv $f ~/Pictures/screenshots/'
@@ -156,3 +165,12 @@ exec --no-startup-id feh --bg-fill /usr/local/share/wallpapers/FreeBSD/a_1600x90
 
 # Make sure the terminal defaults are loaded
 exec --no-startup-id xrdb -merge ~/.Xresources
+
+# startup programs
+#exec --no-startup-id i3-msg 'workspace $tag1; exec xfce4-terminal --command calcurse'
+#exec --no-startup-id i3-msg 'workspace $tag2; exec chromium-browser'
+exec --no-startup-id i3-msg 'workspace $tag3; exec xfce4-terminal --command weechat'
+exec --no-startup-id i3-msg 'workspace $tag4; exec xfce4-terminal --command pms'
+exec --no-startup-id i3-msg 'workspace $tag5; exec xfce4-terminal --command vim'
+exec --no-startup-id i3-msg 'workspace $tag1'
+exec amixer sset Master 20%
