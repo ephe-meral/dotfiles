@@ -16,7 +16,7 @@ Personal configuration files. Relies on the standard german keyboard layout.
 #### zsh
 
 ```shell
-$ chsh -s /bin/zsh
+$ chsh -s /usr/local/bin/zsh
 $ curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
 ```
 
