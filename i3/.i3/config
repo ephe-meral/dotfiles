@@ -81,6 +81,8 @@ bindsym $mod+a focus parent
 bindsym $mod+Tab workspace back_and_forth
 bindsym $mod+Prior workspace prev
 bindsym $mod+Next workspace next
+bindsym $mod+Shift+Prior move workspace to output left
+bindsym $mod+Shift+Next move workspace to output right
 
 # workspaces
 set $tag1 "1: home"
@@ -158,7 +160,7 @@ bindsym $mod+XF86AudioLowerVolume exec amixer -D pulse sset Master 1%- && pkill 
 # Custom KeyBinds
 bindsym $mod+l exec sh ~/.i3/i3lock.sh
 bindsym Print exec scrot '%Y-%m-%d-%T_$wx$h_scrot.png' -e 'mv $f ~/Pictures/screenshots/'
-bindsym $mod+p exec lxrandr
+bindsym $mod+p exec arandr
 
 # Set the default wallpaper
 exec --no-startup-id feh --bg-fill /usr/local/share/wallpapers/FreeBSD/a_1600x900.jpg
@@ -167,10 +169,14 @@ exec --no-startup-id feh --bg-fill /usr/local/share/wallpapers/FreeBSD/a_1600x90
 exec --no-startup-id xrdb -merge ~/.Xresources
 
 # startup programs
+exec --no-startup-id owncloud
+exec --no-startup-id compton -CGb
+exec --no-startup-id amixer sset Master 20%
+exec --no-startup-id mpd
+
 #exec --no-startup-id i3-msg 'workspace $tag1; exec xfce4-terminal --command calcurse'
-#exec --no-startup-id i3-msg 'workspace $tag2; exec chromium-browser'
-exec --no-startup-id i3-msg 'workspace $tag3; exec xfce4-terminal --command weechat'
-exec --no-startup-id i3-msg 'workspace $tag4; exec xfce4-terminal --command pms'
-exec --no-startup-id i3-msg 'workspace $tag5; exec xfce4-terminal --command vim'
-exec --no-startup-id i3-msg 'workspace $tag1'
-exec amixer sset Master 20%
+exec i3-msg 'workspace $tag2; exec chromium-browser'
+exec i3-msg 'workspace $tag3; exec xfce4-terminal --command weechat'
+exec i3-msg 'workspace $tag4; exec xfce4-terminal --command pms'
+exec i3-msg 'workspace $tag5; exec xfce4-terminal --command vim'
+exec i3-msg 'workspace $tag1'

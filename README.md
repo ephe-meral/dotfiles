@@ -7,9 +7,13 @@ Personal configuration files. Relies on the standard german keyboard layout.
 - Windowmanager: i3
 - Editor: VIM
 - Additionally:
+  - compton
+  - scrot
+  - imagemagick
+  - keepass
   - tmux
   - lxappearance
-  - lxrandr
+  - arandr
 
 ## Install
 
@@ -23,16 +27,6 @@ $ curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh 
 Set theme in .zshrc to "nanotech"
 
 Add tmux alias: `alias tmux="tmux -2"`
-
-#### transparency
-
-```shell
-Xcompmgr
-$ echo "xcompmgr -c &" >> ~/.xprofile
-
-transset
-$ echo "[ -n \"$XTERM_VERSION\" ] && transset -a >/dev/null" >> ~./.zshrc
-```
 
 #### xterm config
 
