@@ -38,6 +38,8 @@ bindsym $mod+Shift+q kill
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+i exec --no-startup-id passmenu
+bindsym $mod+Shift+i exec --no-startup-id passmenu --type
 
 # change focus
 bindsym $mod+Left focus left
@@ -85,13 +87,13 @@ bindsym $mod+Shift+Prior move workspace to output left
 bindsym $mod+Shift+Next move workspace to output right
 
 # workspaces
-set $tag1 "1: home"
+set $tag1 "1: music"
 set $tag2 "2: www"
 set $tag3 "3: irc"
-set $tag4 "4: music"
-set $tag5 "5: dev1"
-set $tag6 "6: dev2"
-set $tag7 "7: dev3"
+set $tag4 "4"
+set $tag5 "5"
+set $tag6 "6"
+set $tag7 "7"
 
 # switch to workspace
 bindsym $mod+1 workspace $tag1
@@ -163,20 +165,22 @@ bindsym Print exec scrot '%Y-%m-%d-%T_$wx$h_scrot.png' -e 'mv $f ~/Pictures/scre
 bindsym $mod+p exec arandr
 
 # Set the default wallpaper
-exec --no-startup-id feh --bg-fill /usr/local/share/wallpapers/FreeBSD/a_1600x900.jpg
+exec --no-startup-id feh --bg-fill /home/amnesia/Pictures/heya-space.jpg
 
 # Make sure the terminal defaults are loaded
 exec --no-startup-id xrdb -merge ~/.Xresources
+
+# Start the mail clien in the BG
+exec --no-startup-id dogfood-mp --run
 
 # startup programs
 exec --no-startup-id owncloud
 exec --no-startup-id compton -CGb
 exec --no-startup-id amixer sset Master 20%
 exec --no-startup-id mpd
+exec --no-startup-id nm-applet
 
 #exec --no-startup-id i3-msg 'workspace $tag1; exec xfce4-terminal --command calcurse'
-exec i3-msg 'workspace $tag2; exec chromium-browser'
+exec i3-msg 'workspace $tag1; exec xfce4-terminal --command pms'
 exec i3-msg 'workspace $tag3; exec xfce4-terminal --command weechat'
-exec i3-msg 'workspace $tag4; exec xfce4-terminal --command pms'
-exec i3-msg 'workspace $tag5; exec xfce4-terminal --command vim'
-exec i3-msg 'workspace $tag1'
+exec i3-msg 'workspace $tag2; exec vivaldi-snapshot'
