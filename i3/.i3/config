@@ -167,7 +167,8 @@ bindsym Print exec scrot '%Y-%m-%d-%T_$wx$h_scrot.png' -e 'mv $f ~/Pictures/scre
 bindsym $mod+p exec arandr
 
 # Set the default wallpaper
-exec --no-startup-id feh --bg-fill /usr/local/share/wallpapers/FreeBSD/a_1600x900.jpg
+#exec --no-startup-id feh --bg-fill /usr/local/share/wallpapers/FreeBSD/a_1600x900.jpg
+exec --no-startup-id feh --bg-fill /usr/home/amnesia/wallpaper.jpg
 
 # Make sure the terminal defaults are loaded
 exec --no-startup-id xrdb -merge ~/.Xresources
