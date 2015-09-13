@@ -2,6 +2,11 @@
 ;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
 
+(defun remove-background-color ()
+  "Useful for transparent terminal."
+    (unless (display-graphic-p (selected-frame))
+    	(set-face-background 'default "unspecified-bg" (selected-frame))))
+
 (defun dotspacemacs/layers ()
   "Configuration Layers declaration."
   (setq-default
@@ -18,16 +23,26 @@
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      auto-completion
-     ;; better-defaults
+     better-defaults
      emacs-lisp
      git
      markdown
      org
-     ;; (shell :variables
-     ;;        shell-default-height 30
-     ;;        shell-default-position 'bottom)
+     (shell :variables
+       shell-default-height 30
+       shell-default-position 'bottom)
      syntax-checking
      version-control
+     ;; Added...
+     company-mode
+     erlang
+     elixir
+     dash
+     html
+     colors
+     editorconfig
+     themes-megapack
+     perspectives
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -66,12 +81,12 @@ before layers configuration."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(solarized-light
+   dotspacemacs-themes '(monokai
+                         solarized-light
                          solarized-dark
                          spacemacs-light
                          spacemacs-dark
                          leuven
-                         monokai
                          zenburn)
    ;; If non nil the cursor color matches the state color.
    dotspacemacs-colorize-cursor-according-to-state t
@@ -127,11 +142,11 @@ before layers configuration."
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's active or selected.
    ;; Transparency can be toggled through `toggle-transparency'.
-   dotspacemacs-active-transparency 90
+   dotspacemacs-active-transparency 75
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's inactive or deselected.
    ;; Transparency can be toggled through `toggle-transparency'.
-   dotspacemacs-inactive-transparency 90
+   dotspacemacs-inactive-transparency 75
    ;; If non nil unicode symbols are displayed in the mode line.
    dotspacemacs-mode-line-unicode-symbols t
    ;; If non nil smooth scrolling (native-scrolling) is enabled. Smooth
@@ -162,7 +177,35 @@ before layers configuration."
 layers configuration."
   ;; Global line numbers
   (global-linum-mode)
+  ;; Enable transparency everywhere
+  (toggle-transparency)
+  ;; Remove background for transparency in console mode
+  (add-hook 'window-setup-hook 'remove-background-color)
+  (add-hook 'server-visit-hook 'remove-background-color)
+  ;; Adds elixir specific stuff...
+  (add-hook 'alchemist-mode-hook 'company-mode)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ahs-case-fold-search nil)
+ '(ahs-default-range (quote ahs-range-whole-buffer))
+ '(ahs-idle-interval 0.25)
+ '(ahs-idle-timer 0 t)
+ '(ahs-inhibit-face-list nil)
+ '(ring-bell-function (quote ignore) t))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:background nil))))
+ '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
+ '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil))))
+ '(neo-dir-link-face ((t (:foreground "blue"))))
+ '(neo-file-link-face ((t (:foreground "white")))))
