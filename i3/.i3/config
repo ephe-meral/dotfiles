@@ -160,6 +160,11 @@ bindcode 174 exec mixer vol -5 && pkill -RTMIN+1 i3blocks
 # granular volume control
 bindcode $mod+176 exec mixer vol +1 && pkill -RTMIN+1 i3blocks
 bindcode $mod+174 exec mixer vol -1 && pkill -RTMIN+1 i3blocks
+# brightness
+bindcode $mod+Shift+176 exec sh ~/.bin/brightness_up.sh
+bindcode $mod+Shift+174 exec sh ~/.bin/brightness_down.sh
+bindsym $mod+Shift+n exec sh ~/.bin/brightness_up.sh
+bindsym $mod+Shift+m exec sh ~/.bin/brightness_down.sh
 
 # Custom KeyBinds
 bindsym $mod+l exec sh ~/.i3/i3lock.sh
@@ -168,7 +173,7 @@ bindsym $mod+p exec arandr
 
 # Set the default wallpaper
 #exec --no-startup-id feh --bg-fill /usr/local/share/wallpapers/FreeBSD/a_1600x900.jpg
-exec --no-startup-id feh --bg-fill /usr/home/amnesia/wallpaper.jpg
+exec --no-startup-id feh --bg-fill ~/wallpaper.jpg
 
 # Make sure the terminal defaults are loaded
 exec --no-startup-id xrdb -merge ~/.Xresources
@@ -179,8 +184,9 @@ exec --no-startup-id xrdb -merge ~/.Xresources
 # startup programs
 exec --no-startup-id owncloud
 exec --no-startup-id compton -CGb
-exec --no-startup-id amixer sset Master 20%
+exec --no-startup-id mixer vol 20
 exec --no-startup-id mpd
+exec --no-startup-id emacs --daemon
 
 # ...pc-bsd related
 exec --no-startup-id pc-mixer

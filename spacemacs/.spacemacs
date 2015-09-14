@@ -7,6 +7,29 @@
     (unless (display-graphic-p (selected-frame))
     	(set-face-background 'default "unspecified-bg" (selected-frame))))
 
+(defun copy-to-clipboard ()
+  "Copies selection to x-clipboard."
+  (interactive)
+  (if (display-graphic-p)
+      (progn
+        (message "Yanked region to x-clipboard!")
+        (call-interactively 'clipboard-kill-ring-save))
+    (if (region-active-p)
+        (progn
+          (shell-command-on-region (region-beginning) (region-end) "xsel -i -b")
+          (message "Yanked region to clipboard!")
+          (deactivate-mark))
+      (message "No region active; can't yank to clipboard!"))))
+
+(defun paste-from-clipboard ()
+  "Pastes from x-clipboard."
+  (interactive)
+  (if (display-graphic-p)
+      (progn
+        (clipboard-yank)
+        (message "graphics active"))
+    (insert (shell-command-to-string "xsel -o -b"))))
+
 (defun dotspacemacs/layers ()
   "Configuration Layers declaration."
   (setq-default
@@ -30,19 +53,22 @@
      org
      (shell :variables
        shell-default-height 30
-       shell-default-position 'bottom)
+       shell-default-position 'bottom
+       shell-default-term-shell "/usr/local/bin/zsh")
      syntax-checking
      version-control
      ;; Added...
      company-mode
      erlang
      elixir
+     scala
      dash
      html
      colors
      editorconfig
      themes-megapack
      perspectives
+     xclip
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -184,6 +210,11 @@ layers configuration."
   (add-hook 'server-visit-hook 'remove-background-color)
   ;; Adds elixir specific stuff...
   (add-hook 'alchemist-mode-hook 'company-mode)
+  ;; Keep open buffers etc.
+  (desktop-save-mode 1)
+  ;; Copy / Paste to clipboard from terminal
+  (evil-leader/set-key "o y" 'copy-to-clipboard)
+  (evil-leader/set-key "o p" 'paste-from-clipboard)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
