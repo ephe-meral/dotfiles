@@ -68,7 +68,6 @@
      editorconfig
      themes-megapack
      perspectives
-     xclip
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -201,8 +200,12 @@ before layers configuration."
   "Configuration function.
  This function is called at the very end of Spacemacs initialization after
 layers configuration."
-  ;; Global line numbers
+  ;; Editor related stuff
   (global-linum-mode)
+  (add-hook 'before-save-hook 'delete-trailing-whitespace)
+  (setq tab-width 2)
+  ;; Autocompletion enabled everywhere
+  (global-company-mode)
   ;; Enable transparency everywhere
   (toggle-transparency)
   ;; Remove background for transparency in console mode
@@ -211,7 +214,7 @@ layers configuration."
   ;; Adds elixir specific stuff...
   (add-hook 'alchemist-mode-hook 'company-mode)
   ;; Keep open buffers etc.
-  (desktop-save-mode 1)
+  ;;(desktop-save-mode 1)
   ;; Copy / Paste to clipboard from terminal
   (evil-leader/set-key "o y" 'copy-to-clipboard)
   (evil-leader/set-key "o p" 'paste-from-clipboard)
