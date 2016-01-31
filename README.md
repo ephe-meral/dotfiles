@@ -19,13 +19,25 @@ Personal configuration files. Relies on the standard german keyboard layout.
 
 ## Install
 
-### Dotfile
+#### zsh
+
+Make sure to install this before linking the .zshrc file, then remove the one created
+by the script and link to the one from the repo.
+
+```shell
+$ chsh -s /usr/local/bin/zsh
+$ curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+```
+
+#### dotfiles/folders
 
 Simply link from your home to the stuff in the folders:
 
 ```shell
 $ ln -s [full path to dotfile/folder in repo] [full path to dotfile/folder in home]
 ```
+
+These are the current files & folders that need linking:
 
 ```
 .
@@ -47,30 +59,24 @@ $ ln -s [full path to dotfile/folder in repo] [full path to dotfile/folder in ho
     └── .zshrc
 ```
 
-#### zsh
-
-Make sure to install this before linking the .zshrc file, then remove the given
-file and link to the one from the repo.
-
-```shell
-$ chsh -s /usr/local/bin/zsh
-$ curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
-```
-
 #### fonts
 
 ```shell
-$ fc-cache -f "$HOME/.fonts"
+$ fc-cache -f ~/.fonts
 ```
 
 #### weechat
 
-```
-enable mouse:
-/set weechat.look.mouse on
-/mouse enable
+Add buffers.pl
 
-add buffers.pl
+```
 /script install buffers.pl
 /set weechat.bar.buffers.size 15
+```
+
+Enable mouse:
+
+```
+/set weechat.look.mouse on
+/mouse enable
 ```
