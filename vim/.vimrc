@@ -107,6 +107,11 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:NERDTreeChDirMode       = 2
 let g:ctrlp_working_path_mode = 'rw'
 
+" Highlight visual selection w/o background
+" use :so $VIMRUNTIME/syntax/hitest.vim to show all current settings
+highlight Visual ctermfg=Yellow ctermbg=NONE cterm=bold
+highlight Folded ctermfg=DarkGreen ctermbg=NONE cterm=NONE
+highlight FoldColumn ctermfg=DarkGreen ctermbg=NONE cterm=NONE
 
 " Highlight column 80 when hit by content
 highlight ColorColumn ctermbg=magenta

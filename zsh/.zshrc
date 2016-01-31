@@ -71,8 +71,20 @@ fi
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
+# SSH
+export SSH_KEY_PATH="~/.ssh/id_rsa"
+
+# Term
+export TERMINAL="terminology"
+
+# Java
+export JAVA_VERSION=1.8
+
+# Enable colors and such for git diffs
+MORE="-erX" ; export MORE
+
+# Shows tips
+#[ -x /usr/games/fortune ] && /usr/games/fortune freebsd-tips
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -82,4 +94,6 @@ fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias vi="vim"
 alias tmux="tmux -2"
+alias emc="emacs -nw"
