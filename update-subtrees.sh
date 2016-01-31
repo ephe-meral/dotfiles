@@ -8,3 +8,4 @@ git subtree pull --prefix vim/.vim/bundle/vim-airline https://github.com/vim-air
 git subtree pull --prefix vim/.vim/bundle/vim-elixir https://github.com/elixir-lang/vim-elixir.git master --squash
 git subtree pull --prefix vim/.vim/bundle/vim-multiple-cursors https://github.com/terryma/vim-multiple-cursors.git master --squash
 git subtree pull --prefix vim/.vim/bundle/vim-nerdtree-tabs https://github.com/jistr/vim-nerdtree-tabs.git master --squash
+git subtree pull --prefix vim/.vim/bundle/vim-orgmode https://github.com/jceb/vim-orgmode.git master --squash
