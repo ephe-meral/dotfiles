@@ -32,14 +32,6 @@ bindsym $mod+Return exec terminology
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# start dmenu (a program launcher)
-#bindsym $mod+d exec dmenu_run
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
-bindsym $mod+i exec --no-startup-id passmenu
-bindsym $mod+Shift+i exec --no-startup-id passmenu --type
 
 # change focus
 bindsym $mod+Left focus left
@@ -155,7 +147,16 @@ client.focused   #007fbf #007fbf #ffffff
 client.unfocused #666666 #666666 #ffffff
 client.urgent    #aa0000 #990000 #ffffff
 
-# test key "scancodes" with
+# Start dmenu (a program launcher)
+#bindsym $mod+d exec dmenu_run
+# There also is the (new) i3-dmenu-desktop which only displays applications
+# shipping a .desktop file. It is a wrapper around dmenu, so you need that
+# installed.
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+i exec --no-startup-id ~/.i3/passmenu
+#bindsym $mod+Shift+i exec --no-startup-id ~/.i3/passmenu --type
+
+# Test key "scancodes" with
 # xev | awk -F'[ )]+' '/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }'
 # volume
 bindcode 176 exec mixer vol +5 && pkill -RTMIN+1 i3blocks
@@ -163,11 +164,11 @@ bindcode 174 exec mixer vol -5 && pkill -RTMIN+1 i3blocks
 # granular volume control
 bindcode $mod+176 exec mixer vol +1 && pkill -RTMIN+1 i3blocks
 bindcode $mod+174 exec mixer vol -1 && pkill -RTMIN+1 i3blocks
-# brightness
-bindcode $mod+Shift+176 exec sh ~/.bin/brightness_up.sh
-bindcode $mod+Shift+174 exec sh ~/.bin/brightness_down.sh
-bindsym $mod+Shift+n exec sh ~/.bin/brightness_up.sh
-bindsym $mod+Shift+m exec sh ~/.bin/brightness_down.sh
+# brightness if needed
+#bindcode $mod+Shift+176 exec sh ~/.i3/brightness_up.sh
+#bindcode $mod+Shift+174 exec sh ~/.i3/brightness_down.sh
+#bindsym $mod+Shift+n exec sh ~/.i3/brightness_up.sh
+#bindsym $mod+Shift+m exec sh ~/.i3/brightness_down.sh
 
 # Custom KeyBinds
 bindsym $mod+l exec sh ~/.i3/i3lock.sh

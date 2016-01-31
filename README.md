@@ -2,38 +2,65 @@
 
 Personal configuration files. Relies on the standard german keyboard layout.
 
-- OS: PC-BSD 10.x
-- Terminal: xfce4-terminal
+- OS: FreeBSD 10.x
+- Terminal: terminology
 - Windowmanager: i3
-- Editor: VIM
+- Editor: VIM / Spacemacs
 - Additionally:
-  - compton
-  - scrot
-  - imagemagick
-  - keepass
-  - tmux
-  - lxappearance
   - arandr
+  - compton
+  - dmenu
+  - feh
+  - imagemagick
+  - htop (with linux compat)
+  - pass
+  - scrot
+  - tmux
 
 ## Install
 
+### Dotfile
+
+Simply link from your home to the stuff in the folders:
+
+```shell
+$ ln -s [full path to dotfile/folder in repo] [full path to dotfile/folder in home]
+```
+
+```
+.
+├── X
+│   ├── .Xresources
+│   └── .xinitrc
+├── fonts
+│   └── .fonts/
+├── i3
+│   └── .i3
+├── spacemacs
+│   └── .spacemacs
+├── tmux
+│   └── .tmux.conf
+├── vim
+│   ├── .vim/
+│   └── .vimrc
+└── zsh
+    └── .zshrc
+```
+
 #### zsh
+
+Make sure to install this before linking the .zshrc file, then remove the given
+file and link to the one from the repo.
 
 ```shell
 $ chsh -s /usr/local/bin/zsh
 $ curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
 ```
 
-Set theme in .zshrc to "nanotech"
-
-Add tmux alias: `alias tmux="tmux -2"`
-
-#### xterm config
-
-(executed in i3 startup, X didnt recognize the file...)
+#### fonts
 
 ```shell
-$ xrdb -merge ~/.Xresources
+$ fc-cache -f "$HOME/.fonts"
 ```
 
 #### weechat
