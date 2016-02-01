@@ -1,5 +1,5 @@
 #!/bin/sh
-/usr/sbin/portsnap fetch update && \
+/usr/sbin/portsnap fetch extract update && \
 /usr/local/sbin/portmaster -L --index-only | egrep '(ew|ort) version|total install'
 echo -n "Last update: "
 date -r `pkg query %t | sort | tail -n1` "+%Y%m%d"

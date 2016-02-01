@@ -27,7 +27,7 @@ font xft:Source Code Pro for Powerline 10
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec terminology
+bindsym $mod+Return exec urxvt
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -172,7 +172,7 @@ bindcode $mod+174 exec mixer vol -1 && pkill -RTMIN+1 i3blocks
 
 # Custom KeyBinds
 bindsym $mod+l exec sh ~/.i3/i3lock.sh
-bindsym Print exec scrot '%Y-%m-%d-%T_$wx$h_scrot.png' -e 'mv $f ~/Pictures/screenshots/'
+bindsym Print exec scrot '%Y-%m-%d-%T_$wx$h_scrot.png' -e 'mv $f ~/pictures/screenshots/'
 bindsym $mod+p exec arandr
 
 # startup programs

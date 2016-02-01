@@ -27,3 +27,53 @@ XTerm*color12:    rgb:41/86/be
 XTerm*color13:    rgb:ef/9e/be
 XTerm*color14:    rgb:71/be/be
 XTerm*color15:    rgb:ff/ff/ff
+
+! URXVT specific settings
+
+URxvt*font: xft:Source Code Pro for Powerline:semibold:size=10
+URxvt*letterSpace: -1
+
+! Transparency by default
+URxvt*depth: 32
+URxvt*background: [60]#000000
+URxvt*foreground: white
+
+! Disable the scrollbar & enable shift + pg-up/down
+URxvt*scrollBar: false
+Urxvt*secondaryScroll: true
+! Do not scroll with output
+URxvt*scrollTtyOutput: false
+! Scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+URxvt*scrollWithBuffer: true
+! Scroll back to the bottom on keypress
+URxvt*scrollTtyKeypress: true
+
+! Misc
+URxvt*saveLines: 16384
+URxvt*cursorBlink: true
+URxvt*urgentOnBell: true
+!URxvt*termName: rxvt-unicode
+
+! Tango, baby
+URxvt*color0:  #2E3436
+URxvt*color1:  #a40000
+URxvt*color2:  #4E9A06
+URxvt*color3:  #C4A000
+URxvt*color4:  #3465A4
+URxvt*color5:  #75507B
+URxvt*color6:  #ce5c00
+URxvt*color7:  #babdb9
+URxvt*color8:  #555753
+URxvt*color9:  #EF2929
+URxvt*color10: #8AE234
+URxvt*color11: #FCE94F
+URxvt*color12: #729FCF
+URxvt*color13: #AD7FA8
+URxvt*color14: #fcaf3e
+URxvt*color15: #EEEEEC
+
+! Extensions
+URxvt.perlExtCommon: default,matcher
+! URLS
+URxvt.urlLauncher: /usr/local/bin/firefox
+URxvt.matcher.button: 1

@@ -67,7 +67,7 @@ set ttyfast                    " send more characters for redraws
 set mouse=a                    " enable mouse use in all modes
 " Set this to the name of your terminal that supports mouse codes.
 " Must be one of: xterm, xterm2, netterm, dec, jsbterm, pterm
-set ttymouse=xterm2
+set ttymouse=urxvt
 
 
 " Remappings
@@ -111,8 +111,11 @@ let g:ctrlp_working_path_mode = 'rw'
 " use `:so $VIMRUNTIME/syntax/hitest.vim` to show all current settings
 highlight Visual ctermfg=Yellow ctermbg=NONE cterm=bold,underline
 highlight Search ctermfg=Yellow ctermbg=NONE cterm=bold,underline
+" ...for orgmode
 highlight Folded ctermfg=DarkGreen ctermbg=NONE cterm=NONE
 highlight FoldColumn ctermfg=DarkGreen ctermbg=NONE cterm=NONE
+" ...make the split between buffers less ugly
+highlight VertSplit ctermfg=DarkGray ctermbg=DarkGray cterm=NONE
 
 " Highlight column 80 when hit by content
 highlight ColorColumn ctermbg=magenta

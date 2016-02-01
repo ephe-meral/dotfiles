@@ -3,7 +3,7 @@
 Personal configuration files. Relies on the standard german keyboard layout.
 
 - OS: FreeBSD 10.x
-- Terminal: terminology
+- Terminal: rxvt-unicode
 - Windowmanager: i3
 - Editor: VIM / Spacemacs
 - Additionally:
