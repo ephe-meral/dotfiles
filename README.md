@@ -13,9 +13,11 @@ Personal configuration files. Relies on the standard german keyboard layout.
   - feh
   - imagemagick
   - htop (with linux compat)
-  - pass
+  - password-store
   - scrot
   - tmux
+  - urxvt-perls
+  - xclip
 
 ## Install
 

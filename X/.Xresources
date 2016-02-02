@@ -30,7 +30,7 @@ XTerm*color15:    rgb:ff/ff/ff
 
 ! URXVT specific settings
 
-URxvt*font: xft:Source Code Pro for Powerline:semibold:size=10
+URxvt*font: xft:Source Code Pro for Powerline:semibold:size=9
 URxvt*letterSpace: -1
 
 ! Transparency by default
@@ -73,7 +73,12 @@ URxvt*color14: #fcaf3e
 URxvt*color15: #EEEEEC
 
 ! Extensions
-URxvt.perlExtCommon: default,matcher
+URxvt.perl-ext-common: default,matcher,clipboard
 ! URLS
 URxvt.urlLauncher: /usr/local/bin/firefox
 URxvt.matcher.button: 1
+URxvt.iso14755: false
+URxvt.keysym.Shift-Control-C: perl:clipboard:copy
+URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+URxvt.clipboard.copycmd:  xclip -i -selection clipboard
+URxvt.clipboard.pastecmd: xclip -o -selection clipboard
