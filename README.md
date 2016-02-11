@@ -5,7 +5,7 @@ Personal configuration files. Relies on the standard german keyboard layout.
 - OS: FreeBSD 10.x
 - Terminal: rxvt-unicode
 - Windowmanager: i3
-- Editor: VIM / Spacemacs
+- Editor: NeoVIM / VIM / Spacemacs
 - Additionally:
   - arandr
   - compton
@@ -42,14 +42,18 @@ $ ln -s [full path to dotfile/folder in repo] [full path to dotfile/folder in ho
 These are the current files & folders that need linking:
 
 ```
+$ tree -aL 2
 .
 ├── X
 │   ├── .Xresources
 │   └── .xinitrc
 ├── fonts
-│   └── .fonts/
+│   ├── .fonts/
+│   └── local.conf  # special, see below
 ├── i3
 │   └── .i3
+├── nvim
+│   └── nvim/       # special, see below
 ├── spacemacs
 │   └── .spacemacs
 ├── tmux
@@ -66,6 +70,12 @@ These are the current files & folders that need linking:
 ```
 $ fc-cache -f ~/.fonts
 $ sudo cp fonts/local.conf /usr/local/etc/fonts/
+```
+
+#### neovim
+
+```
+$ ln -s [full path to dotfiles repo]/nvim/nvim [full path to home]/.config/nvim
 ```
 
 #### weechat

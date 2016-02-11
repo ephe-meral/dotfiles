@@ -186,4 +186,4 @@ bindsym $mod+p exec arandr
 #exec i3-msg 'workspace $tag3; exec terminology -e weechat'
 #exec i3-msg 'workspace $tag2; exec vivaldi-snapshot'
 
-exec i3-msg 'workspace $tag1'
+exec i3-msg 'workspace $tag2'

@@ -75,7 +75,7 @@ URxvt*color15: #EEEEEC
 ! Extensions
 URxvt.perl-ext-common: default,matcher,clipboard
 ! URLS
-URxvt.urlLauncher: /usr/local/bin/firefox
+URxvt.url-launcher: /usr/local/bin/firefox
 URxvt.matcher.button: 1
 URxvt.iso14755: false
 URxvt.keysym.Shift-Control-C: perl:clipboard:copy
