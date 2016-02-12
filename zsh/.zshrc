@@ -54,6 +54,8 @@ plugins=(git pass)
 # User configuration
 
 export PATH="/sbin:/bin:/usr/sbin:/usr/bin:/usr/games:/usr/local/sbin:/usr/local/bin:/usr/home/amnesia/.bin"
+export XDG_CONFIG_HOME="/usr/home/amnesia/.config"
+export XDG_DATA_HOME="/usr/home/amnesia/.local/share"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
