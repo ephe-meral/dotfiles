@@ -9,6 +9,7 @@
 " - Ld+t+[t]   = terminal commands (t=new-term)
 " - Ld+x+[np]  = toggle (n=nerdtree p=paste)
 " - Ld+Ld+[?]  = activate EasyMotion (overwin, 2 chars)
+" - Esc+Esc    = escape from terminal mode
 
 " Change the mapleader from \ to SPACE
 let mapleader=" "
