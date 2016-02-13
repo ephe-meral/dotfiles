@@ -29,6 +29,13 @@ nmap <silent> <Leader>xp :set paste!<CR>
 " Escape from terminal mode with double ESC
 tnoremap <ESC><ESC> <C-\><C-n>
 
+" Go to any buffer by number (1-99)
+let c = 1
+while c <= 99
+  execute "nnoremap <Leader>" . c . " :" . c . "b\<CR>"
+  let c += 1
+endwhile
+
 " Consistent window navigation with Alt + h/j/k/l
 tnoremap <A-h> <C-\><C-n><C-w>h
 tnoremap <A-j> <C-\><C-n><C-w>j
@@ -56,6 +63,7 @@ endif
 " Plugins
 call plug#begin('~/.vim/plugged')
 Plug 'airblade/vim-gitgutter'
+Plug 'bling/vim-bufferline'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
 Plug 'easymotion/vim-easymotion'
@@ -70,6 +78,13 @@ Plug 'tpope/vim-git'
 Plug 'tpope/vim-markdown', { 'for': 'markdown' }
 call plug#end()
 
+" Config bufferline
+let g:bufferline_echo = 0
+function! StatusBufferLine()
+  let st=g:bufferline#refresh_status()
+  return g:bufferline_status_info.before . g:bufferline_status_info.current . g:bufferline_status_info.after
+endfunction
+
 " Config CtrlP
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/](\.(git|hg|svn)|\deps|\target|\_site)$',
@@ -77,6 +92,8 @@ let g:ctrlp_custom_ignore = {
   \ 'link': 'some_bad_symbolic_links',
   \ }
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+nnoremap <Leader>p <Nop>
+nnoremap <Leader>b <Nop>
 nmap <silent> <Leader>pp :CtrlPMixed<CR>
 nmap <silent> <Leader>pw :CtrlPMixed<CR><C-\>w
 nmap <silent> <Leader>bb :CtrlPBuffer<CR>
@@ -86,6 +103,24 @@ nmap <silent> <Leader>bm :CtrlPMRU<CR>
 let g:EasyMotion_do_mapping = 0
 nmap <silent> <Leader><Leader> <Plug>(easymotion-overwin-f2)
 let g:EasyMotion_smartcase = 1
+
+" Config Lightline
+let g:lightline = {
+  \ 'active': {
+  \   'left': [ [ 'mode', 'paste' ],
+  \             [ 'fugitive', 'readonly', 'filename' ],
+  \             [ 'bufferline' ] ]
+  \ },
+  \ 'component': {
+  \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
+  \ },
+  \ 'component_function': {
+  \   'bufferline': 'StatusBufferLine'
+  \ },
+  \ 'component_visible_condition': {
+  \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
+  \ }
+  \ }
 
 " Config rainbow parens
 syntax on
