@@ -11,12 +11,20 @@ set tabstop=2
 set shiftwidth=2
 set shiftround
 set splitright
+set laststatus=2
+set showcmd
 " ...allow buffers to be hidden even if modified
 set hidden
 
 " Splitting & executing stuff in the new window
 nmap <silent> <Leader>ss :vsp<CR>
 nmap <silent> <Leader>st :vsp term://zsh<CR>:startinsert<CR>
+
+" Quickly drop into terminal
+nmap <silent> <Leader>tt :e term://zsh<CR>:startinsert<CR>
+
+" Toggles
+nmap <silent> <Leader>xp :set paste!<CR>
 
 " Escape from terminal mode with double ESC
 tnoremap <ESC><ESC> <C-\><C-n>
@@ -47,13 +55,19 @@ endif
 
 " Plugins
 call plug#begin('~/.vim/plugged')
+Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
+Plug 'easymotion/vim-easymotion'
+Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
 Plug 'ervandew/supertab'
-Plug 'godlygeek/csapprox'
+Plug 'itchyny/lightline.vim'
 Plug 'luochen1990/rainbow'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-git'
+Plug 'tpope/vim-markdown', { 'for': 'markdown' }
 call plug#end()
 
 " Config CtrlP
@@ -68,23 +82,10 @@ nmap <silent> <Leader>pw :CtrlPMixed<CR><C-\>w
 nmap <silent> <Leader>bb :CtrlPBuffer<CR>
 nmap <silent> <Leader>bm :CtrlPMRU<CR>
 
-" Config CS Approx (terminal color approximation)
-let g:CSApprox_hook_post = [
-  \ 'highlight Normal            ctermbg=NONE',
-  \ 'highlight LineNr            ctermbg=NONE',
-  \ 'highlight SignifyLineAdd    cterm=bold ctermbg=NONE ctermfg=green',
-  \ 'highlight SignifyLineDelete cterm=bold ctermbg=NONE ctermfg=red',
-  \ 'highlight SignifyLineChange cterm=bold ctermbg=NONE ctermfg=yellow',
-  \ 'highlight SignifySignAdd    cterm=bold ctermbg=NONE ctermfg=green',
-  \ 'highlight SignifySignDelete cterm=bold ctermbg=NONE ctermfg=red',
-  \ 'highlight SignifySignChange cterm=bold ctermbg=NONE ctermfg=yellow',
-  \ 'highlight SignColumn        ctermbg=NONE',
-  \ 'highlight CursorLine        ctermbg=NONE cterm=underline',
-  \ 'highlight Folded            ctermbg=NONE cterm=bold',
-  \ 'highlight FoldColumn        ctermbg=NONE cterm=bold',
-  \ 'highlight NonText           ctermbg=NONE',
-  \ 'highlight clear LineNr'
-  \]
+" Config EasyMotion
+let g:EasyMotion_do_mapping = 0
+nmap <silent> <Leader><Leader> <Plug>(easymotion-overwin-f2)
+let g:EasyMotion_smartcase = 1
 
 " Config rainbow parens
 syntax on
@@ -94,26 +95,19 @@ let g:rainbow_conf = {
   \}
 
 " Config NerdTree
-nmap <silent> <Leader>n :NERDTreeToggle<CR>
+nmap <silent> <Leader>xn :NERDTreeToggle<CR>
+let NERDTreeShowBookmarks = 1
+
+" Fugitive mapping
+nmap <silent> <Leader>gb :Gblame<cr>
+nmap <silent> <Leader>gc :Gcommit<cr>
+nmap <silent> <Leader>gd :Gdiff<cr>
+nmap <silent> <Leader>gl :Glog<cr>
+nmap <silent> <Leader>gp :Git pull<cr>
+nmap <silent> <Leader>gP :Git push<cr>
+nmap <silent> <Leader>gs :Gstatus<cr>
+nmap <silent> <Leader>gw :Gbrowse<cr>
+nmap <silent> <Leader>g? :map <Leader>g<cr>
 
 " Default colorscheme
-"colorscheme preto
-"colorscheme acme
 colorscheme 256_noir
-" Remove background set by colorscheme
-hi Normal ctermbg=NONE
-hi Comment ctermbg=NONE
-hi Constant ctermbg=NONE
-hi Special ctermbg=NONE
-hi Identifier ctermbg=NONE
-hi Statement ctermbg=NONE
-hi PreProc ctermbg=NONE
-hi Type ctermbg=NONE
-hi Underlined ctermbg=NONE
-hi Todo ctermbg=NONE
-hi String ctermbg=NONE
-hi Function ctermbg=NONE
-hi Conditional ctermbg=NONE
-hi Repeat ctermbg=NONE
-hi Operator ctermbg=NONE
-hi Structure ctermbg=NONE
