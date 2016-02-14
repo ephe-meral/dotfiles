@@ -79,7 +79,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-sleuth'          " Takes care of figuring out indentation automagically
 Plug 'luochen1990/rainbow'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'vim-scripts/scratch.vim'
+Plug 'mtth/scratch.vim'
 " Git
 Plug 'airblade/vim-gitgutter'    " Displays (+/-) in versioned files
 Plug 'tpope/vim-fugitive'
@@ -124,8 +124,21 @@ nmap <silent> <Leader><Leader> <Plug>(easymotion-overwin-f2)
 let g:EasyMotion_smartcase = 1
 
 " Config Vim-Fetch
-nmap <silent> <Leader>pw gF
-
+function! NoScratchFetch()
+  let type = &ft
+  call fetch#cfile(v:count1)
+  " If this is called from the scratch buffer,
+  " go back to previous delete the scratch window
+  " and load the recently opened buffer
+  if type=='scratch'
+    let window = winnr()
+    let buffer = bufnr('%')
+    :wincmd p
+    exec 'close '.window
+    exec 'buffer '.buffer
+  endif
+endfunction
+nmap <silent> <Leader>pw :<C-U>call NoScratchFetch()<CR>
 
 " Config Fugitive
 nmap <silent> <Leader>gb :Gblame<cr>
@@ -169,7 +182,12 @@ let g:rainbow_conf = {
   \}
 
 " Config Scratchbuffer
-nmap <silent> <Leader>bs :Scratch<CR>
+let g:scratch_no_mappings = 1
+let g:scratch_horizontal = 0      " Display it vertically
+let g:scratch_top = 0             " Open on the left side
+let g:scratch_height = 0.2
+let g:scratch_insert_autohide = 0 " Don't hide when exiting insert mode
+nmap <silent> <Leader>bs :ScratchInsert<CR>
 
 " Default colorscheme
 colorscheme 256_noir
