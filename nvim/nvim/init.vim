@@ -3,7 +3,7 @@
 " Ideas for consistency: (Ld = Leader key, i.e. SPACE)
 " - Ld+[1-99]   = go to buffer by nr
 " - Ld+b+[bnms] = buffer commands (b=search n=new m=MRU s=scratch)
-" - Ld+g+[?]    = git commands (see below)
+" - Ld+g+[bdh]  = git commands (b=blame d=diff h=github)
 " - Ld+p+[pw]   = ctrlp/vim-fetch (p=ctrlp w=fetch-file-under-cursor)
 " - Ld+s+[st]   = vertical split (s=new-buf t=new-term)
 " - Ld+t+[t]    = terminal commands (t=new-term)
@@ -31,10 +31,10 @@ set hidden
 
 " Splitting & executing stuff in the new window
 nmap <silent> <Leader>ss :vsp<CR>
-nmap <silent> <Leader>st :vsp term://zsh<CR>:startinsert<CR>
+nmap <silent> <Leader>st :vsp term://zsh<CR>:file zsh<CR>:startinsert<CR>
 
 " Quickly drop into terminal
-nmap <silent> <Leader>tt :e term://zsh<CR>:startinsert<CR>
+nmap <silent> <Leader>tt :e term://zsh<CR>:file zsh<CR>:startinsert<CR>
 
 " Toggles
 nmap <silent> <Leader>xp :set paste!<CR>
@@ -74,7 +74,6 @@ endif
 " Plugins
 call plug#begin('~/.vim/plugged')
 " Visuals & utils
-Plug 'bling/vim-bufferline'      " Displays open buffers
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-sleuth'          " Takes care of figuring out indentation automagically
 Plug 'luochen1990/rainbow'
@@ -95,15 +94,6 @@ Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
 Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
 Plug 'tpope/vim-markdown', { 'for': 'markdown' }
 call plug#end()
-
-" Config Bufferline
-let g:bufferline_echo = 0
-let g:bufferline_rotate = 1
-let g:bufferline_fixed_index = 0
-function! StatusBufferLine()
-  let st=g:bufferline#refresh_status()
-  return g:bufferline_status_info.before . g:bufferline_status_info.current . g:bufferline_status_info.after
-endfunction
 
 " Config CtrlP
 let g:ctrlp_custom_ignore = {
@@ -141,29 +131,22 @@ endfunction
 nmap <silent> <Leader>pw :<C-U>call NoScratchFetch()<CR>
 
 " Config Fugitive
+nmap <Leader>g <Nop>
 nmap <silent> <Leader>gb :Gblame<cr>
-nmap <silent> <Leader>gc :Gcommit<cr>
 nmap <silent> <Leader>gd :Gdiff<cr>
-nmap <silent> <Leader>gl :Glog<cr>
-nmap <silent> <Leader>gp :Git pull<cr>
-nmap <silent> <Leader>gP :Git push<cr>
-nmap <silent> <Leader>gs :Gstatus<cr>
-nmap <silent> <Leader>gw :Gbrowse<cr>
-nmap <silent> <Leader>g? :map <Leader>g<cr>
+" ...open in Github or W/e
+nmap <silent> <Leader>gh :Gbrowse<cr>
 
 " Config Lightline
 let g:lightline = {
   \ 'colorscheme': 'wombat',
   \ 'active': {
   \   'left': [ [ 'mode', 'paste' ],
-  \             [ 'fugitive', 'readonly', 'filename' ],
-  \             [ 'bufferline' ] ]
+  \             [ 'readonly', 'filename', 'modified' ],
+  \             [ 'fugitive' ] ]
   \ },
   \ 'component': {
   \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
-  \ },
-  \ 'component_function': {
-  \   'bufferline': 'StatusBufferLine'
   \ },
   \ 'component_visible_condition': {
   \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
