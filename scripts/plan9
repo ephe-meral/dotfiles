@@ -1,0 +1,5 @@
+#!/bin/sh
+# execute arbitrary plan9 commands with this
+PLAN9=/usr/local/plan9; export PLAN9
+PATH=$PATH:$PLAN9/bin; export PATH
+$*

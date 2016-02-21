@@ -100,7 +100,3 @@ alias vi="vim"
 alias vim="nvim"
 alias tmux="tmux -2"
 alias emc="emacs -nw"
-
-# Plan9Ports
-PLAN9=/usr/local/plan9; export PLAN9
-PATH=$PATH:$PLAN9/bin; export PATH

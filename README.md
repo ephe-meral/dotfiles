@@ -14,6 +14,7 @@ Personal configuration files. Relies on the standard german keyboard layout.
   - imagemagick
   - htop (with linux compat)
   - password-store
+  - redshift
   - scrot
   - tmux
   - urxvt-perls
