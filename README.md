@@ -15,6 +15,7 @@ Personal configuration files. Relies on the standard german keyboard layout.
   - imagemagick
   - htop (with linux compat)
   - password-store
+  - plan9port
   - redshift
   - scrot
   - tmux
@@ -38,7 +39,7 @@ $ curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh 
 #### home folders
 
 ```
-$ mkdir -p ~/documents ~/downloads/transfer ~/media/usb ~/music ~/pictures ~/projects ~/work
+$ mkdir -p ~/.bin ~/documents ~/downloads/transfer ~/media/usb ~/music ~/pictures ~/projects ~/work
 ```
 
 #### this repo
@@ -63,20 +64,22 @@ $ tree -aL 2
 ├── X
 │   ├── .Xresources
 │   └── .xinitrc
-├── fonts
+├── fonts (special, see below)
 │   ├── .fonts/
-│   └── local.conf  # special, see below
+│   └── local.conf
 ├── i3
-│   └── .i3
-├── nvim
-│   └── nvim/       # special, see below
+│   └── .i3/
+├── nvim (special, see below)
+│   └── nvim/
+├── scripts (special, see below)
+│   ├── mount-usb
+│   ├── plan9
+│   ├── umount-usb
+│   └── update-ports.sh
 ├── spacemacs
 │   └── .spacemacs
 ├── tmux
 │   └── .tmux.conf
-├── vim
-│   ├── .vim/
-│   └── .vimrc
 └── zsh
     └── .zshrc
 ```
@@ -100,6 +103,16 @@ Or, for older neovim versions
 $ ln -s $HOME/projects/dotfiles/nvim/nvim $HOME/.nvim
 $ ln -s $HOME/projects/dotfiles/nvim/nvim/init.vim $HOME/.nvimrc
 ```
+
+Then, in neovim, install the plugins:
+
+```
+:PlugInstall
+```
+
+#### scripts
+
+Symlink whatever you need to $HOME/.bin/[script name] instead of the standard approach
 
 #### weechat
 
