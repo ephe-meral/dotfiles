@@ -6,11 +6,12 @@ Personal configuration files. Relies on the standard german keyboard layout.
 - Terminal: rxvt-unicode
 - Windowmanager: i3
 - Editor: NeoVIM / VIM / Spacemacs
-- Additionally:
+- Additionally: (essential tools)
   - arandr
   - compton
   - dmenu
   - feh
+  - git
   - imagemagick
   - htop (with linux compat)
   - password-store
@@ -22,6 +23,8 @@ Personal configuration files. Relies on the standard german keyboard layout.
 
 ## Install
 
+The following snippets are provided for convenience and to be able to selectively install stuff. Put them in a shell script in case you need to run things automagically.
+
 #### zsh
 
 Make sure to install this before linking the .zshrc file, then remove the one created
@@ -32,12 +35,24 @@ $ chsh -s /usr/local/bin/zsh
 $ curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
 ```
 
-#### dotfiles/folders
-
-Simply link from your home to the stuff in the folders:
+#### home folders
 
 ```
-$ ln -s [full path to dotfile/folder in repo] [full path to dotfile/folder in home]
+$ mkdir -p ~/documents ~/downloads/transfer ~/media/usb ~/music ~/pictures ~/projects ~/work
+```
+
+#### this repo
+
+```
+$ cd ~/projects && git clone git@github.com:ephe-meral/dotfiles.git
+```
+
+#### dotfiles/folders
+
+Symlink the repo stuff to your home:
+
+```
+$ ln -s $HOME/projects/dotfiles/[folder or file in repo] $HOME/[folder or file in home]
 ```
 
 These are the current files & folders that need linking:
@@ -76,7 +91,14 @@ $ sudo cp fonts/local.conf /usr/local/etc/fonts/
 #### neovim
 
 ```
-$ ln -s [full path to dotfiles repo]/nvim/nvim [full path to home]/.config/nvim
+$ ln -s $HOME/projects/dotfiles/nvim/nvim $HOME/.config/nvim
+```
+
+Or, for older neovim versions
+
+```
+$ ln -s $HOME/projects/dotfiles/nvim/nvim $HOME/.nvim
+$ ln -s $HOME/projects/dotfiles/nvim/nvim/init.vim $HOME/.nvimrc
 ```
 
 #### weechat
