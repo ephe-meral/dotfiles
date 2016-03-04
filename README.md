@@ -35,6 +35,7 @@ by the script and link to the one from the repo.
 ```
 $ chsh -s /usr/local/bin/zsh
 $ curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+$ ln -s $HOME/projects/dotfiles/malumdiscordiae.zsh-theme $HOME/.oh-my-zsh/themes/malumdiscordiae.zsh-theme
 ```
 
 #### home folders
@@ -57,7 +58,7 @@ Symlink the repo stuff to your home:
 $ ln -s $HOME/projects/dotfiles/[folder or file in repo] $HOME/[folder or file in home]
 ```
 
-These are the current files & folders that need linking:
+These are the current files & folders that need linking: (Special instructions marked with \*)
 
 ```
 $ tree -aL 2
@@ -65,14 +66,18 @@ $ tree -aL 2
 ├── X
 │   ├── .Xresources
 │   └── .xinitrc
-├── fonts (special, see below)
+├── compiled *
+│   └── st/
+├── fonts *
 │   ├── .fonts/
 │   └── local.conf
-├── i3
+├── i3 *
 │   └── .i3/
-├── nvim (special, see below)
+├── nvim *
 │   └── nvim/
-├── scripts (special, see below)
+├── plan9
+│   └── .plumbing
+├── scripts *
 │   ├── mount-usb
 │   ├── plan9
 │   ├── umount-usb
@@ -81,8 +86,10 @@ $ tree -aL 2
 │   └── .spacemacs
 ├── tmux
 │   └── .tmux.conf
-└── zsh
-    └── .zshrc
+└── zsh *
+    ├── .zshrc
+    ├── malumdiscordiae.zsh-theme
+    └── theme.png
 ```
 
 #### fonts
