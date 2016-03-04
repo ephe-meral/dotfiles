@@ -14,6 +14,10 @@
 " Change the mapleader from \ to SPACE
 let mapleader=" "
 nnoremap <SPACE> <Nop>
+" ...this is a issue with the terminal capability recognizer
+" if it happens to be fixed, this can be removed.
+" see https://github.com/neovim/neovim/issues/3211
+map <silent> <F1> <Del>
 
 " General stuff
 set number
@@ -156,6 +160,8 @@ let g:lightline = {
 " Config NerdTree
 nmap <silent> <Leader>xn :NERDTreeToggle<CR>
 let NERDTreeShowBookmarks = 1
+" Close vim if the only window left open is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Config Rainbow parens
 syntax on

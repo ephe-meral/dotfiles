@@ -1,6 +1,7 @@
 # dotfiles
 
-Personal configuration files. Relies on the standard german keyboard layout.
+Personal configuration files.
+Relies on the standard german keyboard layout.
 
 - OS: FreeBSD 10.x
 - Terminal: rxvt-unicode
@@ -90,6 +91,20 @@ $ tree -aL 2
 $ fc-cache -f ~/.fonts
 $ sudo cp fonts/local.conf /usr/local/etc/fonts/
 ```
+
+#### term
+
+http://st.suckless.org
+
+````
+$ cd $HOME/projects && fetch http://dl.suckless.org/st/st-0.6.tar.gz && tar -xf st-0.6.tar.gz && mv st-0.6 st
+$ set "st-0.6-argbbg.diff" && fetch http://st.suckless.org/patches/$1 && git apply $1
+$ set "st-0.6-clipboard.diff" && fetch http://st.suckless.org/patches/$1 && git apply $1
+$ set "st-0.6-hidecursor.diff" && fetch http://st.suckless.org/patches/$1 && git apply $1
+$ ln -s $HOME/projects/dotfiles/compiled/st/config.h $HOME/projects/st/config.h
+$ make
+$ ln -s $HOME/projects/st/st $HOME/.bin/st
+````
 
 #### neovim
 

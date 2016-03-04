@@ -77,7 +77,7 @@ fi
 export SSH_KEY_PATH="~/.ssh/id_rsa"
 
 # Term
-export TERMINAL="terminology"
+export TERMINAL="xterm"
 
 # Java
 export JAVA_VERSION=1.8
@@ -87,6 +87,9 @@ MORE="-erX" ; export MORE
 
 # Shows tips
 #[ -x /usr/games/fortune ] && /usr/games/fortune freebsd-tips
+
+# Auto rehash when new commands in PATH
+zstyle ':completion:*' rehash true
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
