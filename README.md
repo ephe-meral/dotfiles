@@ -4,9 +4,9 @@ Personal configuration files.
 Relies on the standard german keyboard layout.
 
 - OS: FreeBSD 10.x
-- Terminal: rxvt-unicode
+- Terminal: [suckless' simple term](http://st.suckless.org) ($TERM set as xterm)
 - Windowmanager: i3
-- Editor: NeoVIM / VIM / Spacemacs
+- Editor: NeoVIM
 - Additionally: (essential tools)
   - arandr
   - compton
@@ -19,8 +19,6 @@ Relies on the standard german keyboard layout.
   - plan9port
   - redshift
   - scrot
-  - tmux
-  - urxvt-perls
   - xclip
 
 ## Install
