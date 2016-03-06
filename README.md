@@ -32,8 +32,17 @@ by the script and link to the one from the repo.
 
 ```
 $ chsh -s /usr/local/bin/zsh
-$ curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
-$ ln -s $HOME/projects/dotfiles/malumdiscordiae.zsh-theme $HOME/.oh-my-zsh/themes/malumdiscordiae.zsh-theme
+$ git clone --recursive git@github.com:ephe-meral/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+$ cd ~/.zprezto && git remote add upstream https://github.com/sorin-ionescu/prezto.git && cd -
+```
+
+To update Prezto, run:
+
+```
+$ cd ~/.zprezto
+$ git fetch upstream/master && git rebase upstream/master
+$ git submodule update --init --recursive
+$ git push
 ```
 
 #### home folders

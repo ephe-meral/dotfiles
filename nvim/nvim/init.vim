@@ -18,6 +18,8 @@ nnoremap <SPACE> <Nop>
 " if it happens to be fixed, this can be removed.
 " see https://github.com/neovim/neovim/issues/3211
 map <silent> <F1> <Del>
+imap <silent> <F1> <Del>
+vmap <silent> <F1> <Del>
 
 " General stuff
 set number
