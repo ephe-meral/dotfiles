@@ -182,3 +182,7 @@ nmap <silent> <Leader>bs :ScratchInsert<CR>
 
 " Default colorscheme
 colorscheme 256_noir
+
+" Make the vert split less visually distracting
+set fillchars+=vert:┃
+hi VertSplit ctermfg=DarkGray ctermbg=NONE cterm=NONE
