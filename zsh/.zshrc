@@ -5,7 +5,7 @@ export ZSH=/home/amnesia/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="malumdiscordiae"
+ZSH_THEME="yagni"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -104,3 +104,4 @@ alias vi="vim"
 alias vim="nvim"
 alias tmux="tmux -2"
 alias emc="emacs -nw"
+alias gst="git status -bs"
