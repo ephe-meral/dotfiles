@@ -9,6 +9,7 @@ Relies on the standard german keyboard layout.
 - Editor: NeoVIM
 - Additionally: (essential tools)
   - arandr
+  - bitlbee & bitlbee-facebook
   - compton
   - dmenu
   - feh
@@ -142,6 +143,14 @@ Then, in neovim, install the plugins:
 #### scripts
 
 Symlink whatever you need to $HOME/.bin/[script name] instead of the standard approach
+
+#### bitlbee
+
+Be sure to initialize the user-data dir
+
+```
+$ mkdir -p ~/.config/bitlbee
+```
 
 #### weechat
 

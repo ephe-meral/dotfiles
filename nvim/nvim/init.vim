@@ -51,6 +51,9 @@ nmap <silent> <Leader>bn :enew<CR>
 " Escape from terminal mode with double ESC
 tnoremap <ESC><ESC> <C-\><C-n>
 
+" Prevent the cursor from moving to the left when leaving insert mode
+inoremap <silent> <Esc> <C-O>:stopinsert<CR>
+
 " Highlight tailing whitespace
 set list listchars=tab:\ \ ,trail:·
 
@@ -98,6 +101,7 @@ Plug 'kopischke/vim-fetch'       " Enable :e path/to/file:42:7
 " Syntax
 Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
 Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
+"Plug 'jceb/vim-orgmode', { 'for': 'org' }
 Plug 'tpope/vim-markdown', { 'for': 'markdown' }
 call plug#end()
 
