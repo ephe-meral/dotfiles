@@ -52,7 +52,8 @@ nmap <silent> <Leader>bn :enew<CR>
 tnoremap <ESC><ESC> <C-\><C-n>
 
 " Prevent the cursor from moving to the left when leaving insert mode
-inoremap <silent> <Esc> <C-O>:stopinsert<CR>
+" TODO: doesn't work with visual-block mode?
+"inoremap <silent> <Esc> <C-O>:stopinsert<CR>
 
 " Highlight tailing whitespace
 set list listchars=tab:\ \ ,trail:·
