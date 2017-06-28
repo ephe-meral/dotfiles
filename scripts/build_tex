@@ -1,0 +1,7 @@
+#!/bin/sh
+# continuously build a texfile and view in mupdf
+# requires: entr, mupdf, tectonic
+TEXFILE=$1
+PDFFILE=`basename $TEXFILE tex`pdf
+tectonic "$TEXFILE" && mupdf "$PDFFILE" &
+echo "$1" | entr -s "tectonic $1 && pkill -HUP mupdf"

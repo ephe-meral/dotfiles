@@ -21,6 +21,10 @@ Relies on the standard german keyboard layout.
   - redshift
   - scrot
   - xclip
+  - xpdf / mupdf
+- More stuff: (based on need)
+  - [tectonic](https://tectonic-typesetting.github.io/en-US/)
+  - [entr](http://entrproject.org/)
 
 ## Install
 
@@ -166,4 +170,12 @@ Enable mouse:
 ```
 /set weechat.look.mouse on
 /mouse enable
+```
+
+#### tex building
+
+Install tectonic, entr and mupdf and then use the following command to continuously build and update the PDF file when the source texfile changes:
+
+```
+$ build_tex yourtexfile.tex
 ```
