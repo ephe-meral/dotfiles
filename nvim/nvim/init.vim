@@ -26,6 +26,7 @@ set number
 set nobackup
 set nowritebackup
 set noswapfile
+set mouse=a
 set tabstop=2
 set shiftwidth=2
 set shiftround
