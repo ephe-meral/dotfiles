@@ -158,12 +158,7 @@ $ mkdir -p ~/.config/bitlbee
 
 #### weechat
 
-Add buffers.pl
-
-```
-/script install buffers.pl
-/set weechat.bar.buffers.size 15
-```
+Note: After weechat vers. 1.8 the buflist plugin for a sidepanel with buffers will be installed by default.
 
 Enable mouse:
 
