@@ -185,7 +185,7 @@ bindsym $mod+p exec arandr
 
 #exec --no-startup-id i3-msg 'workspace $tag1; exec xfce4-terminal --command calcurse'
 #exec i3-msg 'workspace $tag1; exec terminology -e pms'
-exec i3-msg 'workspace $tag3; exec $term -e weechat'
 #exec i3-msg 'workspace $tag2; exec vivaldi-snapshot'
+exec i3-msg 'workspace $tag10; exec $term -e weechat'
 
-exec i3-msg 'workspace $tag2'
+exec i3-msg 'workspace $tag10'
