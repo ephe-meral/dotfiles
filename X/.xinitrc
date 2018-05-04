@@ -3,10 +3,10 @@
 xrdb -merge $HOME/.Xresources &
 
 # Checks the standard dirs to be present, fills ENV vars
-xdg-user-dirs-update &
+LC_ALL=C xdg-user-dirs-update &
 
 # Start the plumber for program interconnectivity
-plan9 plumber -p $HOME/.plumbing &
+#plan9 plumber -p $HOME/.plumbing &
 
 # Start the editor service (TODO: currently disabled)
 #NVIM_LISTEN_ADDRESS=127.0.0.1:6666 nvim --headless &
@@ -14,7 +14,9 @@ plan9 plumber -p $HOME/.plumbing &
 # Some eyecandy (wallpaper, colors, window transitions & transparency...)
 feh --bg-fill $HOME/.wallpaper.jpg &
 redshift -l 55.7:12.6 &
-compton -CGb &
+#compton -CGb &
+compton -bCGf -i 0.8 --sw-opti
+cbatticon -i symbolic &
 
 # Start the bitlbee local server (IM->IRC aggregator)
 bitlbee -F -i 127.0.0.1 -p 33337 -c $HOME/.bitlbee -d $HOME/.config/bitlbee &

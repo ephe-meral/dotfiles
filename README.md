@@ -3,8 +3,8 @@
 Personal configuration files.
 Relies on the standard german keyboard layout.
 
-- OS: FreeBSD 10.x
-- Terminal: [suckless' simple term](http://st.suckless.org) ($TERM set as xterm)
+- OS: Voidlinux (alternatively: FreeBSD 11.x)
+- Terminal: [suckless' simple term](http://st.suckless.org) ($TERM set as xterm-color)
 - Windowmanager: i3
 - Editor: NeoVIM
 - Additionally: (essential tools)
@@ -14,13 +14,17 @@ Relies on the standard german keyboard layout.
   - dmenu
   - feh
   - git
+  - gnupg
+  - i3status
   - imagemagick
   - htop (with linux compat)
-  - password-store
-  - plan9port
+  - password-store (or 'pass')
   - redshift
   - scrot
+  - slim
+  - weechat
   - xclip
+  - xdg-user-dir
   - xpdf / mupdf
 - More stuff: (based on need)
   - [tectonic](https://tectonic-typesetting.github.io/en-US/)
@@ -33,7 +37,7 @@ The following snippets are provided for convenience and to be able to selectivel
 #### zsh
 
 Make sure to install this before linking the .zshrc file, then remove the one created
-by the script and link to the one from the repo.
+by the script and link everything from `.zprezto/runcoms`
 
 ```
 $ chsh -s /usr/local/bin/zsh
@@ -45,22 +49,32 @@ To update Prezto, run:
 
 ```
 $ cd ~/.zprezto
-$ git fetch upstream/master && git rebase upstream/master
+$ git fetch upstream master && git rebase upstream/master
 $ git submodule update --init --recursive
 $ git push
-```
-
-#### home folders
-
-```
-$ mkdir -p ~/.bin ~/documents ~/downloads/transfer ~/media/usb ~/music ~/pictures ~/projects ~/work
 ```
 
 #### this repo
 
 ```
+$ mkdir ~/projects
 $ cd ~/projects && git clone git@github.com:ephe-meral/dotfiles.git
 ```
+
+#### home folders
+
+Note that these contain lower-cased names. To correctly set these, we run `xdg-user-dirs-update` during startup. (See `X/.xinit.rc`)
+
+```
+$ mkdir -p ~/.bin ~/.config ~/documents ~/downloads/transfer ~/media/usb ~/music ~/pictures ~/work
+$ ln -s $HOME/projects/dotfiles/X/user-dirs.dirs $HOME/.config/
+$ ln -s $HOME/projects/dotfiles/X/user-dirs.locale $HOME/.config/
+```
+
+#### i3
+
+No special handling. Link the folder as instructed below.
+
 
 #### dotfiles/folders
 
@@ -70,75 +84,67 @@ Symlink the repo stuff to your home:
 $ ln -s $HOME/projects/dotfiles/[folder or file in repo] $HOME/[folder or file in home]
 ```
 
-These are the current files & folders that need linking: (Special instructions marked with \*)
+These are the current files & folders that need linking: (For special instructions see in-line comment or below)
 
 ```
 $ tree -aL 2
 .
-├── X
+├── X (-> ~/)
 │   ├── .Xresources
-│   └── .xinitrc
-├── compiled *
+│   ├── .xinitrc
+│   ├── user-dirs.dirs
+│   └── user-dirs.locale
+├── compiled (-> see below)
 │   └── st/
-├── fonts *
+├── fonts (-> see below)
 │   ├── .fonts/
 │   └── local.conf
-├── i3 *
+├── i3 (-> ~/)
 │   └── .i3/
-├── nvim *
+├── nvim (-> ~/.config, see below)
 │   └── nvim/
-├── plan9
+├── plan9 (-> ~/ if needed)
 │   └── .plumbing
-├── scripts *
+├── scripts (-> ~/.bin if needed)
+│   ├── build_tex
 │   ├── mount-usb
 │   ├── plan9
 │   ├── umount-usb
 │   └── update-ports.sh
-├── spacemacs
+├── spacemacs (-> ~/)
 │   └── .spacemacs
-├── tmux
-│   └── .tmux.conf
-└── zsh *
-    ├── .zshrc
-    ├── malumdiscordiae.zsh-theme
-    └── theme.png
+└── tmux (-> ~/)
+    └── .tmux.conf
 ```
 
 #### fonts
+
+Install this before the terminal etc.
 
 ```
 $ fc-cache -f ~/.fonts
 $ sudo cp fonts/local.conf /usr/local/etc/fonts/
 ```
 
-#### term
+#### compiled (st)
 
 http://st.suckless.org
 
 ````
-$ cd $HOME/projects && fetch http://dl.suckless.org/st/st-0.6.tar.gz && tar -xf st-0.6.tar.gz && mv st-0.6 st
-$ set "st-0.6-argbbg.diff" && fetch http://st.suckless.org/patches/$1 && git apply $1
-$ set "st-0.6-clipboard.diff" && fetch http://st.suckless.org/patches/$1 && git apply $1
-$ set "st-0.6-hidecursor.diff" && fetch http://st.suckless.org/patches/$1 && git apply $1
-$ ln -s $HOME/projects/dotfiles/compiled/st/config.h $HOME/projects/st/config.h
-$ make
-$ ln -s $HOME/projects/st/st $HOME/.bin/st
+$ git clone git://git.suckless.org/st
+$ git checkout 041912a791e8c2f4d5d2415b16210d29d7e701c5 # Approx. 0.8.1 + 3 commits, 29.03.18
+$ git apply st-alpha-0.8.1.diff
+$ git apply st-clipboard-20180309-c5ba9c0.diff
+$ git apply -3 st-hidecursor-0.8.diff # Use -3 here because diff is not up-to-date with repo
+$ git apply st-scrollback-0.8.diff
+$ vi st-scrollback-mouse-0.8.diff # Find the st.h 129 diff, make sure the 'alpha' var from st-alpha diff is in there
+$ git apply --recount st-scrollback-mouse-0.8.diff
+$ sudo make clean install
 ````
 
 #### neovim
 
-```
-$ ln -s $HOME/projects/dotfiles/nvim/nvim $HOME/.config/nvim
-```
-
-Or, for older neovim versions
-
-```
-$ ln -s $HOME/projects/dotfiles/nvim/nvim $HOME/.nvim
-$ ln -s $HOME/projects/dotfiles/nvim/nvim/init.vim $HOME/.nvimrc
-```
-
-Then, in neovim, install the plugins:
+Link `nvim`. Then, in neovim, install the plugins:
 
 ```
 :PlugInstall
@@ -150,13 +156,15 @@ Symlink whatever you need to $HOME/.bin/[script name] instead of the standard ap
 
 #### bitlbee
 
-Be sure to initialize the user-data dir
+Be sure to initialize the user-data dir, and copy any settings from offline storage.
 
 ```
 $ mkdir -p ~/.config/bitlbee
 ```
 
 #### weechat
+
+Copy any settings (the `~/.weechat` folder) from offline storage.
 
 Note: After weechat vers. 1.8 the buflist plugin for a sidepanel with buffers will be installed by default.
 
