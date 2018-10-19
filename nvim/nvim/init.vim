@@ -105,6 +105,7 @@ Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
 Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
 "Plug 'jceb/vim-orgmode', { 'for': 'org' }
 Plug 'tpope/vim-markdown', { 'for': 'markdown' }
+Plug 'w0rp/ale'                  " Linting for most common stuff
 call plug#end()
 
 " Config CtrlP
@@ -112,7 +113,7 @@ let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/](\.(git|hg|svn)|\deps|\target|\_site)$',
   \ 'file': '\v\.(o|so|class|jar|png|jpg|jpeg)$',
   \ 'link': 'some_bad_symbolic_links',
-  \ }
+  \}
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 nnoremap <Leader>p <Nop>
 nnoremap <Leader>b <Nop>
@@ -163,7 +164,7 @@ let g:lightline = {
   \ 'component_visible_condition': {
   \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
   \ }
-  \ }
+  \}
 
 " Config NerdTree
 nmap <silent> <Leader>xn :NERDTreeToggle<CR>
@@ -185,6 +186,14 @@ let g:scratch_top = 0             " Open on the left side
 let g:scratch_height = 0.2
 let g:scratch_insert_autohide = 0 " Don't hide when exiting insert mode
 nmap <silent> <Leader>bs :ScratchInsert<CR>
+
+" Linter config
+let g:ale_linters = {
+  \ 'javascript': ['eslint']
+  \}
+let g:ale_fixers = {
+  \ 'javascript': ['prettier', 'eslint']
+  \}
 
 " Default colorscheme
 colorscheme 256_noir

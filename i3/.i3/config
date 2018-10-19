@@ -162,12 +162,17 @@ bindsym $mod+i exec --no-startup-id ~/.i3/passmenu
 # Test key "scancodes" with
 # xev | awk -F'[ )]+' '/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }'
 # volume
-bindcode 176 exec mixer vol +5 && pkill -RTMIN+1 i3blocks
-bindcode 174 exec mixer vol -5 && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioMute exec (amixer set Master toggle && amixer set Headphone toggle && amixer set Speaker toggle)
+bindsym XF86AudioRaiseVolume exec amixer sset Master 5%+
+bindsym XF86AudioLowerVolume exec amixer sset Master 5%-
+#bindcode 176 exec mixer vol +5 && pkill -RTMIN+1 i3blocks
+#bindcode 174 exec mixer vol -5 && pkill -RTMIN+1 i3blocks
 # granular volume control
-bindcode $mod+176 exec mixer vol +1 && pkill -RTMIN+1 i3blocks
-bindcode $mod+174 exec mixer vol -1 && pkill -RTMIN+1 i3blocks
+#bindcode $mod+176 exec mixer vol +1 && pkill -RTMIN+1 i3blocks
+#bindcode $mod+174 exec mixer vol -1 && pkill -RTMIN+1 i3blocks
 # brightness if needed
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 #bindcode $mod+Shift+176 exec sh ~/.i3/brightness_up.sh
 #bindcode $mod+Shift+174 exec sh ~/.i3/brightness_down.sh
 #bindsym $mod+Shift+n exec sh ~/.i3/brightness_up.sh

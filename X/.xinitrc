@@ -15,7 +15,7 @@ LC_ALL=C xdg-user-dirs-update &
 feh --bg-fill $HOME/.wallpaper.jpg &
 redshift -l 55.7:12.6 &
 #compton -CGb &
-compton -bCGf -i 0.8 --sw-opti
+compton -bCGf -i 0.8 --sw-opti &
 cbatticon -i symbolic &
 
 # Start the bitlbee local server (IM->IRC aggregator)
