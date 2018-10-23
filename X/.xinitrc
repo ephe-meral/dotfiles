@@ -13,7 +13,7 @@ LC_ALL=C xdg-user-dirs-update &
 
 # Some eyecandy (wallpaper, colors, window transitions & transparency...)
 feh --bg-fill $HOME/.wallpaper.jpg &
-redshift -l 55.7:12.6 &
+redshift -l 52:13 &
 #compton -CGb &
 compton -bCGf -i 0.8 --sw-opti &
 cbatticon -i symbolic &
