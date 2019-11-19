@@ -162,7 +162,7 @@ bindsym $mod+i exec --no-startup-id ~/.i3/passmenu
 # Test key "scancodes" with
 # xev | awk -F'[ )]+' '/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }'
 # volume
-bindsym XF86AudioMute exec (amixer set Master toggle && amixer set Headphone toggle && amixer set Speaker toggle)
+bindsym XF86AudioMute exec (amixer set Master toggle && amixer set Headphone toggle && amixer set Speaker toggle && amixer set Mic toggle)
 bindsym XF86AudioRaiseVolume exec amixer sset Master 5%+
 bindsym XF86AudioLowerVolume exec amixer sset Master 5%-
 #bindcode 176 exec mixer vol +5 && pkill -RTMIN+1 i3blocks

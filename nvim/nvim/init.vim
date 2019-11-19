@@ -192,8 +192,12 @@ let g:ale_linters = {
   \ 'javascript': ['eslint']
   \}
 let g:ale_fixers = {
+  \ 'c': ['clang-format'],
+  \ 'elixir': ['mix_format'],
   \ 'javascript': ['prettier', 'eslint'],
-  \ 'json': ['prettier']
+  \ 'json': ['prettier'],
+  \ 'rust': ['rustfmt'],
+  \ 'yaml': ['prettier']
   \}
 
 " Default colorscheme
