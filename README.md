@@ -4,7 +4,7 @@ Personal configuration files.
 Relies on the standard german keyboard layout.
 
 - OS: Voidlinux (alternatively: FreeBSD 11.x)
-- Terminal: [suckless' simple term](http://st.suckless.org) ($TERM set as xterm-color)
+- Terminal: alacritty
 - Windowmanager: i3
 - Editor: NeoVIM
 - Additionally: (essential tools)
@@ -84,6 +84,12 @@ Symlink the repo stuff to your home:
 $ ln -s $HOME/projects/dotfiles/[folder or file in repo] $HOME/[folder or file in home]
 ```
 
+Some folders/files (see tree below) want to be linked to `$XDG_CONFIG_HOME`. Either use that var instead of `$HOME` if it exists, or use this:
+
+```
+$ ln -s $HOME/projects/dotfiles/[folder or file in repo] $HOME/.config/[folder or file in home]
+```
+
 These are the current files & folders that need linking: (For special instructions see in-line comment or below)
 
 ```
@@ -94,6 +100,8 @@ $ tree -aL 2
 │   ├── .xinitrc
 │   ├── user-dirs.dirs
 │   └── user-dirs.locale
+├── alacritty (-> ~/.config)
+│   └── alacritty.yml
 ├── compiled (-> see below)
 │   └── st/
 ├── fonts (-> see below)
@@ -125,22 +133,6 @@ Install this before the terminal etc.
 $ fc-cache -f ~/.fonts
 $ sudo cp fonts/local.conf /usr/local/etc/fonts/
 ```
-
-#### compiled (st)
-
-http://st.suckless.org
-
-````
-$ git clone git://git.suckless.org/st
-$ git checkout 041912a791e8c2f4d5d2415b16210d29d7e701c5 # Approx. 0.8.1 + 3 commits, 29.03.18
-$ git apply st-alpha-0.8.1.diff
-$ git apply st-clipboard-20180309-c5ba9c0.diff
-$ git apply -3 st-hidecursor-0.8.diff # Use -3 here because diff is not up-to-date with repo
-$ git apply st-scrollback-0.8.diff
-$ vi st-scrollback-mouse-0.8.diff # Find the st.h 129 diff, make sure the 'alpha' var from st-alpha diff is in there
-$ git apply --recount st-scrollback-mouse-0.8.diff
-$ sudo make clean install
-````
 
 #### neovim
 
