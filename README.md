@@ -174,3 +174,11 @@ Install tectonic, entr and mupdf and then use the following command to continuou
 ```
 $ build_tex yourtexfile.tex
 ```
+
+#### python
+
+Installing this the first time needed some additional libraries I didn't have to make later build processes work.
+I am using pyenv to manage python versions - before installing them though, make sure to install also:
+
+- libressl-devel
+- libffi-devel
