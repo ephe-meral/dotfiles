@@ -28,6 +28,7 @@ set nowritebackup
 set noswapfile
 set mouse=a
 set tabstop=2
+set expandtab
 set shiftwidth=2
 set shiftround
 set splitright
