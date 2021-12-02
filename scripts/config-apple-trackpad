@@ -1,4 +1,5 @@
 #!/bin/sh
 TRACKPAD_ID=$(xinput list --id-only "Apple Inc. Magic Trackpad 2")
-xinput set-prop $TRACKPAD_ID 310 2, 2, 0
-xinput set-prop $TRACKPAD_ID 306 0.8
+xinput set-prop $TRACKPAD_ID 'Synaptics Finger' 2, 2, 0
+xinput set-prop $TRACKPAD_ID 'Device Accel Constant Deceleration' 0.8
+xinput set-prop $TRACKPAD_ID 'Synaptics Scrolling Distance' 100, 100
